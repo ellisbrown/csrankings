@@ -9,8 +9,10 @@ TARGETS = csrankings.js csrankings.min.js generated-author-info.csv
 
 .PHONY: home-pages scholar-links fix-affiliations update-dblp clean-dblp download-dblp shrink-dblp clean-csrankings
 
-PYTHON = python3 # 3.7
-PYPY   = python3 # pypy
+PYTHON = python # 3.7
+PYPY   = python # pypy
+# PYTHON = python3 # 3.7
+# PYPY   = python3 # pypy
 
 all: generated-author-info.csv csrankings.js csrankings.min.js csrankings.csv  # fix-affiliations home-pages scholar-links
 	$(MAKE) clean-csrankings
@@ -101,4 +103,3 @@ collab-graph: generated-author-info.csv faculty-coauthors.csv
 	$(PYTHON) util/generate-all-pubs.py
 	@echo "Building collaboration graph data."
 	$(PYTHON) util/make-collaboration-graph.py
-

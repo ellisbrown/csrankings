@@ -1,5 +1,6 @@
 import csv
 import gzip
+from tqdm import tqdm
 
 from lxml import etree as ElementTree
 
@@ -19,9 +20,9 @@ def parseDBLP(facultydict):
 
         oldnode = None
 
-        for (event, node) in ElementTree.iterparse(
+        for (event, node) in tqdm(ElementTree.iterparse(
             f, events=["start", "end"], load_dtd=True
-        ):
+        )):
 
             if oldnode is not None:
                 oldnode.clear()
